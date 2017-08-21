@@ -1,0 +1,114 @@
+Learn Git
+
+#TO initialize git:
+$git init
+
+#To add file in git (staging)
+# A for all project (folder) otherwise provide file name
+$git add [filename] || A
+
+#after adding files in git to check status about files
+$git status
+
+#after adding files in git to commit files so git now can know and read these files (to make snap shots for rollback)
+$git commit -m "message"
+
+#to link this foler with github after creating repo and finding the URL of this repo
+$git remote add origin [link]
+e.g : git remote add origin https://github.com/fahadnoor076/learngit.git
+
+# to push repository on cloud (mean push files in our created repo)
+$git push origin master
+
+#if user2 (some other user) wants to clone(download) our project so he will type the following command with the following link of github (project)
+
+$git clone [link]
+e.g git clone https://github.com/fahadnoor076/learngit.git
+
+#Now to add a new file in our existing project you have to :
+$git add origin [link]
+and then commit:
+$git commit -m "message"
+and after this you have to push the file to github:
+$git push origin master
+
+#so now if user2 want to get only this particular file only to pull in his existing downloaded/cloned project so he have to type:
+$git pull
+
+PART 2
+------------------
+#Making new branch and making connection master and new branch so if user one make any change to project the orignal project will not be effected. And both users can work tension free on their one project simultaneously.
+
+#to know about the branches in github
+$git branch
+
+#to create new branch 
+$git branch [new branch name]
+e.g: git branch new_feature
+
+#now to switch on new branch which we created recently
+$git checkout [new branch name]
+e.g: git checkout new_feature
+
+#now we are adding our project to new branch i.e new_feature
+$git add -A
+$git commit -m "adding new files"
+
+#now to make connection between new_feature and master first we have to go in master
+$git checkout master (to switch on master)
+then,
+$git merge [branch name]
+e.g: git merge new_feature (to merge or synchronize the code between both branches---in our case master and new_feature)
+
+#to delete any branch
+$git branch -d [branch name]
+e.g: git branch -d new_features
+
+PART 3
+------------------
+# Learning about git log
+# to see logs of git (about the activity)
+$git log (for all activities)
+$git log -3 (for lastest 3, -2 for 2 ....)
+$git log --oneline (to see all commit messages in one line)
+
+#to see log for particular file
+#git log -i (for case insensitive) --grep=[file_name]
+$git log -i --grep="readme"
+
+#to see log author(user) wise
+#git log --author=[user_name]
+$git log --author="fahadnoor076"
+
+#search log by text
+#git log -i(for case insensitive) -G"['text']"
+git log -i -G"Hello"
+
+#git log -i -p (to see about changes on code level) -G"Hello" (code containing "Hello")
+$git log -i -p -G"Hello"
+
+PART 4
+----------------
+#learning about git stash
+#git stash tab use kia jata hai jab for example agar hun me aik functionality puri nahi ki hai aur humen code git hub pe bhi dalna hai aur is scenerio me agar user2 ah ker code pull karega tw usko un complete code milega tw ab hum is scenerio se bachne k lye git stash use karenge
+#git stash stores the changes temporarily (in particular file in which you were working and not yet completed fully)
+
+#to save the file temporary with comment
+$git stash save "added h2"
+
+#to see git stash list
+$git stash list
+
+#to see on which file you stash (mean saved temporarily) and return you the key of this particular change
+$git stash list
+
+#after you will save the stash the chances you made will be vanish from file and this will be saved temporarily, so to retrive the chances you will type:
+#git stash apply [stash_key](by "git stash list" you will see the line key and by this line key you will retrive the changes saved temporarily in stash)
+$git stash apply stash@{0}
+
+#to drop/delete the particular line change from stash type:
+#git stash drop [stash_key]
+$git stash drop stash@{0}
+
+#to drop all stashes
+$git stash clean
